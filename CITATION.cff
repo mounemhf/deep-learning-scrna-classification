@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this code in your work, please cite it as below."
+type: software
+title: "deep-learning-scrna-classification: a comparative study of GNN vs classical baselines for single-cell cell-type classification"
+authors:
+  - given-names: "Mounem"
+    family-names: "Houf"
+license: MIT
+version: 0.1.0
+repository-code: "https://github.com/mounemhf/deep-learning-scrna-classification"
+keywords:
+  - single-cell RNA-seq
+  - graph neural network
+  - GraphSAGE
+  - PyTorch Geometric
+  - cell-type classification
+references:
+  - type: article
+    title: "Inductive Representation Learning on Large Graphs"
+    authors:
+      - family-names: Hamilton
+        given-names: William L.
+      - family-names: Ying
+        given-names: Rex
+      - family-names: Leskovec
+        given-names: Jure
+    journal: "NeurIPS"
+    year: 2017
+  - type: article
+    title: "SCANPY: large-scale single-cell gene expression data analysis"
+    authors:
+      - family-names: Wolf
+        given-names: F. Alexander
+      - family-names: Angerer
+        given-names: Philipp
+      - family-names: Theis
+        given-names: Fabian J.
+    journal: "Genome Biology"
+    year: 2018
+    doi: "10.1186/s13059-017-1382-0"
+  - type: web
+    title: "10x Genomics — PBMC 3k dataset (v3 chemistry)"
+    url: "https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-1-standard-1-1-0"

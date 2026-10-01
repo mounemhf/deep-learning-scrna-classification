@@ -1,0 +1,39 @@
+# --- Data (never commit) ---
+data/raw/
+data/*.tar
+data/*.tar.gz
+
+# --- Generated results ---
+# Ignored except the final figures, committed as the portfolio showcase.
+results/*
+!results/README.md
+!results/figures/
+results/figures/*
+!results/figures/*.png
+
+# --- Generated report (committed as showcase) ---
+report/*
+!report/README.md
+!report/report.md
+
+# --- Model checkpoints (never commit) ---
+*.pt
+*.ckpt
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+
+# --- Editors / OS ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# --- Secrets ---
+.env
+*.pem
+*.key

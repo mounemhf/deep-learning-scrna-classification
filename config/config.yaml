@@ -1,0 +1,52 @@
+# Central configuration: every path, hyperparameter and seed used by src/.
+# Nothing is hardcoded in the Python modules.
+
+paths:
+  matrix_dir: "data/raw/filtered_gene_bc_matrices/hg19"
+  processed: "results/processed"
+  tables: "results/tables"
+  figures: "results/figures"
+  logs: "results/logs"
+  predictions: "results/predictions"
+  experiments_csv: "results/experiments.csv"
+  best_model: "results/best_model.pt"
+  report: "report"
+
+# Preprocessing + label/cluster construction (scanpy + CellTypist)
+prepare:
+  min_genes: 200
+  min_cells: 3
+  max_pct_mito: 5.0
+  max_counts: 15000
+  mito_prefix: "MT-"
+  target_sum: 10000
+  n_top_hvg: 2000
+  n_pcs: 50                 # also the feature set of logreg / mlp / graphsage_pca
+  n_neighbors: 15
+  # High resolution on purpose: labels must span SEVERAL clusters so that
+  # whole clusters can be held out while the label stays represented in train
+  # (3.0 -> ~26 clusters / 9 labels on PBMC 3k, 3 labels holdout-eligible)
+  clustering_resolution: 3.0
+  celltypist_model: "Immune_All_Low.pkl"
+  min_class_cells: 20       # labels with fewer cells are dropped
+
+# Cell-cell k-NN graph in PCA space
+graph:
+  k: 15
+
+# Whole-cluster holdout split (see README for the rationale)
+split:
+  val_fraction: 0.15
+  test_fraction: 0.15
+
+# Torch models (mlp, graphsage_pca, graphsage_hvg)
+training:
+  lr: 0.01
+  weight_decay: 0.0005
+  hidden_dim: 64
+  dropout: 0.5
+  max_epochs: 200
+  patience: 20              # early stopping on validation macro F1
+
+seed: 42
+device: "auto"              # "auto" -> cuda if available, else cpu
